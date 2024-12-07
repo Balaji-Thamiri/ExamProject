@@ -1,0 +1,52 @@
+<beans xmlns="http://www.springframework.org/schema/beans" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- Employee Bean -->
+    <bean id="employee" class="com.klef.jfsd.exam.Employee">
+        <constructor-arg value="101" />
+        <constructor-arg value="Balaji" />
+        <constructor-arg value="75000.0" />
+        <constructor-arg value="marketing" />
+        <constructor-arg>
+            <list>
+                <value>maths</value>
+                <value>physics</value>
+                <value>chemistry</value>
+            </list>
+        </constructor-arg>
+    </bean>
+
+    <!-- Instructor Bean -->
+    <bean id="instructor" class="com.klef.jfsd.exam.Instructor">
+        <property name="instructorId" value="1" />
+        <property name="name" value="Dr. Smith" />
+        <property name="email" value="dr.smith@example.com" />
+        <property name="phoneNumber" value="123-456-7890" />
+    </bean>
+
+    <!-- Course Bean -->
+    <bean id="course" class="com.klef.jfsd.exam.Course">
+        <property name="courseId" value="501" />
+        <property name="courseName" value="Spring Framework" />
+        <property name="credits" value="4" />
+        <property name="instructor" ref="instructor" />
+    </bean>
+
+    <!-- EmployeeController Bean -->
+    <bean id="employeeController" class="com.klef.jfsd.exam.EmployeeController">
+        <property name="employee" ref="employee" />
+    </bean>
+
+    <!-- InstructorController Bean -->
+    <bean id="instructorController" class="com.klef.jfsd.exam.InstructorController">
+        <property name="instructor" ref="instructor" />
+    </bean>
+
+    <!-- CourseController Bean -->
+    <bean id="courseController" class="com.klef.jfsd.exam.CourseController">
+        <property name="course" ref="course" />
+    </bean>
+
+</beans>
